@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AVERION.TECH</title>
+    <meta name="description"
+        content="selamat datang di Averion Class">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Averion.tech">
+    <meta property="og:description" content="Link-in-bio sederhana, cepat, dan responsive.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/path/to/profile.jpg">
+
+    <!-- Favicon (replace or remove) -->
+    <link rel="icon" href="data:,"><!-- tiny blank favicon -->
+
+    <style>
+        /* --- Reset & base --- */
+        :root {
+            --bg: #4775c0;
+            /* dark page background */
+            --card: #0b1220;
+            --muted: #9aa4b2;
+            --accent: #06b6d4;
+            /* cyan-ish */
+            --btn-bg: linear-gradient(90deg, var(--accent), #7c3aed);
+            --radius: 16px;
+            --max-width: 580px;
+            --shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+        }
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;  
+            padding-top: 60px;            
+        }
+
+        .top-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome {
+            font-size: 40px;
+            font-weight: 800;
+            color: #e6eef6;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #85c6ff 0%, #01121a 100%);
+            color: #e6eef6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+        }
+
+        /* --- Container --- */
+        .wrap {
+            width: 100%;
+            max-width: var(--max-width);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            text-align: center;
+       
+        }
+        .profile {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex: 0 0 84px;
+            border: 3px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(180deg, #0b1220, #07101a);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0 0 4px 0
+        }
+
+        p.tag {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .links {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            background: var(--btn-bg);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(39, 58, 118, 0.6);
+            transition: transform .12s ease, opacity .12s ease;
+        }
+
+        .btn:active {
+            transform: translateY(1px)
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .icons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px
+        }
+
+        .icons a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px
+        }
+
+        footer {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        /* Responsive tweaks */
+        @media (max-width:420px) {
+            .wrap {
+                padding: 20px;
+                border-radius: 18px
+            }
+
+            .avatar {
+                width: 72px;
+                height: 72px
+            }
+
+            .btn {
+                padding: 12px
+            }
+        }
+
+        .btn:focus {
+            outline: 3px solid rgba(6, 182, 212, 0.16);
+            outline-offset: 3px
+        }
+    </style>
+</head>
+
+<body class="page">
+        <div class="top-area">
+            <h2 class="welcome">Welcome to the Averion Class</h2>
+        </div>
+
+    <main class="wrap" role="main">
+        <header class="profile" aria-label="Profil">
+            <div class="avatar" id="avatar">
+                <img src="img/averion.png" alt="Foto Profil">
+            </div>
+            <div>
+                <h1 id="name">AVERION.TECH</h1>
+                <p class="tag" id="bio">Where Intelligence Meets Elegance.</p>
+            </div>
+        </header>
+
+        <section class="links" aria-label="Tautan">
+            <a class="btn" href="https://www.instagram.com/averion.tech?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="btn" href="https://www.tiktok.com/@averion.tech?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a class="btn" href="https://www.youtube.com/@classAverion" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="btn" href="https://spotify.link/UeCMjVN3AYb" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a class="btn" href="https://l.instagram.com/?u=https%3A%2F%2Fngl.link%2Faverion.tech%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnPue_-XzVvgpgFtQt2WkaWxgznDC0rR5EF1VjweUczi8nNpCM-199Q_cG2ng_aem_7HREqfmicn-7BrEYrAT_rQ&e=AT0p_poU11RkMPTdzMYeHCqV0i8colb5fPG5z28rqkfLEo55vRtdp-w-7Q10oXxm5tsYP1CmuVUlnmX4A6710vkH5ZXlaK0IjXKg7wZakw" target="_blank" rel="noopener noreferrer">NGL</a>
+            <a class="btn secondary" href="mbrosis.a25@gmail.com">Kirim Email</a>
+        </section>
+
+        <div class="icons" aria-hidden="false">
+            <a href="https://github.com/" aria-label="GitHub" target="_blank" rel="noopener noreferrer">GitHub</a> 
+        </div> 
+
+        <footer>
+            <div class="small">© <span id="year"></span> Averion.Tech — <a href="#"
+                    style="color:inherit;text-decoration:underline;">Privacy</a></div>
+        </footer>
+    </main>
+
+    <script>
+   
+        const config = {
+            name: 'AVERION.TECH', 
+            bio: 'Where Intelligence Meets Elegance',
+            avatar: 'img/averion.png', 
+        };
+
+        document.getElementById('name').textContent = config.name;
+        document.getElementById('bio').textContent = config.bio;
+        const img = document.querySelector('#avatar img');
+        img.src = config.avatar;
+        img.alt = config.name + ' — foto profil';
+
+        // tahun otomatis
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Optional: keyboard shortcut to copy first link (for quick testing)
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
+                const first = document.querySelector('.links a');
+                if (first) {
+                    navigator.clipboard.writeText(first.href).then(() => {
+                        // small feedback
+                        first.style.opacity = '0.7';
+                        setTimeout(() => first.style.opacity = '1', 250);
+                    }).catch(() => { });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
