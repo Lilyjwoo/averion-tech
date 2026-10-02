@@ -20,12 +20,10 @@
         /* --- Reset & base --- */
         :root {
             --bg: #4775c0;
-            /* dark page background */
             --card: #0b1220;
             --muted: #9aa4b2;
-            --accent: #06b6d4;
-            /* cyan-ish */
-            --btn-bg: linear-gradient(90deg, var(--accent), #7c3aed);
+            --accent: #9c874c;
+            --btn-bg: linear-gradient(90deg, var(--accent), #cfc096);
             --radius: 16px;
             --max-width: 580px;
             --shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
@@ -62,7 +60,7 @@
         body {
             margin: 0;
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            background: linear-gradient(180deg, #85c6ff 0%, #01121a 100%);
+            background: linear-gradient(180deg, #000000 0%, #00072D 100%);
             color: #e6eef6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -107,6 +105,21 @@
             object-fit: cover;
             display: block
         }
+                /* Placeholder ketika foto dihapus */
+        .avatar.empty {
+            background: #5a5a5a7a; /* abu-abu halus */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar.empty::after {
+            content: "";
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18); 
+        }
 
         h1 {
             font-size: 20px;
@@ -133,13 +146,18 @@
             text-decoration: none;
             font-weight: 600;
             background: var(--btn-bg);
-            color: #fff;
+            color: #0b0b0b;
             box-shadow: 0 6px 20px rgba(39, 58, 118, 0.6);
             transition: transform .12s ease, opacity .12s ease;
         }
-
+        .btn:hover {
+            box-shadow: 0 0 14px #cfc096, 0 0 22px #cfc096;
+            transform: translateY(-2px);
+}
         .btn:active {
-            transform: translateY(1px)
+            transform: scale(0.94) translateY(2px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5) inset;
+            opacity: 0.9;
         }
 
         .btn.secondary {
@@ -194,6 +212,32 @@
             outline: 3px solid rgba(6, 182, 212, 0.16);
             outline-offset: 3px
         }
+                .avatar-controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .avatar-controls button {
+            padding: 8px 14px;
+            font-size: 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background: rgba(255,255,255,0.08);
+            color: #e6eef6;
+            transition: 0.2s ease;
+        }
+
+        .avatar-controls button:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        #fileInput {
+            display: none; /* disembunyikan */
+        }
+
     </style>
 </head>
 
@@ -212,14 +256,21 @@
                 <p class="tag" id="bio">Where Intelligence Meets Elegance.</p>
             </div>
         </header>
+        <div class="avatar-controls">
+            <button onclick="document.getElementById('fileInput').click()">Ganti Foto</button>
+            <button onclick="removePhoto()">Hapus Foto</button>
+        </div>
+
+        <input type="file" id="fileInput" accept="image/*">
 
         <section class="links" aria-label="Tautan">
+            <a class="btn" href="https://ngl.link/averion.tech" target="_blank" rel="noopener noreferrer">OUR PROFILE</a>
             <a class="btn" href="https://www.instagram.com/averion.tech?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a class="btn" href="https://www.tiktok.com/@averion.tech?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
             <a class="btn" href="https://www.youtube.com/@classAverion" target="_blank" rel="noopener noreferrer">YouTube</a>
             <a class="btn" href="https://spotify.link/UeCMjVN3AYb" target="_blank" rel="noopener noreferrer">Spotify</a>
-            <a class="btn" href="https://l.instagram.com/?u=https%3A%2F%2Fngl.link%2Faverion.tech%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnPue_-XzVvgpgFtQt2WkaWxgznDC0rR5EF1VjweUczi8nNpCM-199Q_cG2ng_aem_7HREqfmicn-7BrEYrAT_rQ&e=AT0p_poU11RkMPTdzMYeHCqV0i8colb5fPG5z28rqkfLEo55vRtdp-w-7Q10oXxm5tsYP1CmuVUlnmX4A6710vkH5ZXlaK0IjXKg7wZakw" target="_blank" rel="noopener noreferrer">NGL</a>
-            <a class="btn secondary" href="mbrosis.a25@gmail.com">Kirim Email</a>
+            <a class="btn" href="https://ngl.link/averion.tech" target="_blank" rel="noopener noreferrer">NGL</a>
+            <a class="btn secondary" href="https://mail.google.com/mail/?view=cm&fs=1&to=brosis.a25@gmail.com" target="_blank" rel="noopener noreferrer">Kirim Email</a>
         </section>
 
         <div class="icons" aria-hidden="false">
@@ -262,6 +313,38 @@
                 }
             }
         });
+
+    // --- Ganti Foto Profil ---
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.querySelector('#avatar img');
+                img.src = e.target.result;
+
+                // hilangkan placeholder
+                document.getElementById('avatar').classList.remove('empty');
+                img.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // --- Hapus Foto Profil ---
+        function removePhoto() {
+            const avatar = document.getElementById('avatar');
+            const img = avatar.querySelector("img");
+
+            // sembunyikan gambar
+            img.style.display = "none";
+
+            // aktifkan placeholder
+            avatar.classList.add("empty");
+        }
+
     </script>
 </body>
 
