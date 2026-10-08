@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>AVERION.TECH</title>
     <meta name="description"
-        content="selamat datang di Averion Class">
+        content="Selamat Datang di Averion Class">
     <!-- Open Graph -->
     <meta property="og:title" content="Averion.tech">
     <meta property="og:description" content="Link-in-bio sederhana, cepat, dan responsive.">
@@ -197,12 +197,7 @@
             outline: 3px solid rgba(6, 182, 212, 0.16);
             outline-offset: 3px
         }
-                .avatar-controls {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
+     
 
     </style>
 </head>
@@ -256,8 +251,8 @@
         document.getElementById('name').textContent = config.name;
         document.getElementById('bio').textContent = config.bio;
         const img = document.querySelector('#avatar img');
-        img.src = config.avatar;
-        img.alt = config.name + ' — foto profil';
+       // img.src = config.avatar;
+       // img.alt = config.name + ' — foto profil';
 
         // tahun otomatis
         document.getElementById('year').textContent = new Date().getFullYear();
