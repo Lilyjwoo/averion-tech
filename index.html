@@ -219,25 +219,6 @@
             justify-content: center;
         }
 
-        .avatar-controls button {
-            padding: 8px 14px;
-            font-size: 12px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            background: rgba(255,255,255,0.08);
-            color: #e6eef6;
-            transition: 0.2s ease;
-        }
-
-        .avatar-controls button:hover {
-            background: rgba(255,255,255,0.15);
-        }
-
-        #fileInput {
-            display: none; /* disembunyikan */
-        }
-
     </style>
 </head>
 
@@ -256,11 +237,7 @@
                 <p class="tag" id="bio">Where Intelligence Meets Elegance.</p>
             </div>
         </header>
-        <div class="avatar-controls">
-            <button onclick="document.getElementById('fileInput').click()">Ganti Foto</button>
-            <button onclick="removePhoto()">Hapus Foto</button>
-        </div>
-
+     
         <input type="file" id="fileInput" accept="image/*">
 
         <section class="links" aria-label="Tautan">
@@ -314,7 +291,7 @@
             }
         });
 
-    // --- Ganti Foto Profil ---
+/*    // --- Ganti Foto Profil ---
         const fileInput = document.getElementById('fileInput');
 
         fileInput.addEventListener('change', function () {
@@ -333,7 +310,7 @@
             reader.readAsDataURL(file);
         });
 
-        // --- Hapus Foto Profil ---
+/*        // --- Hapus Foto Profil ---
         function removePhoto() {
             const avatar = document.getElementById('avatar');
             const img = avatar.querySelector("img");
