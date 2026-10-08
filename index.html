@@ -59,137 +59,242 @@
         }
 
 
-        body {
-
-            min-height: 100vh;
-
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Arial,
-                sans-serif;
-
-            color: var(--text);
-
-            background:
-                radial-gradient(
-                    circle at 50% 20%,
-                    rgba(38, 53, 115, 0.25),
-                    transparent 35%
+           /* =========================
+       FUTURISTIC BACKGROUND
+    ========================= */
+    
+    body {
+        min-height: 100vh;
+    
+        font-family:
+            Inter,
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Arial,
+            sans-serif;
+    
+        color: var(--text);
+    
+        background:
+            radial-gradient(
+                circle at 50% 10%,
+                rgba(38, 64, 145, 0.35),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 10% 80%,
+                rgba(185, 161, 92, 0.12),
+                transparent 25%
+            ),
+            radial-gradient(
+                circle at 90% 60%,
+                rgba(30, 60, 150, 0.18),
+                transparent 30%
+            ),
+            linear-gradient(
+                135deg,
+                #000000 0%,
+                #020617 45%,
+                #00072d 100%
+            );
+    
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    
+        padding: 50px 20px;
+    
+        overflow-x: hidden;
+    
+        position: relative;
+    
+        -webkit-font-smoothing: antialiased;
+    }
+    
+        
+        /* =========================
+           GRID TECHNOLOGY
+        ========================= */
+        
+        body::before {
+        
+            content: "";
+        
+            position: fixed;
+        
+            inset: 0;
+        
+            background-image:
+                linear-gradient(
+                    rgba(120, 140, 200, 0.055) 1px,
+                    transparent 1px
                 ),
                 linear-gradient(
-                    180deg,
-                    var(--bg-dark) 0%,
-                    var(--bg-navy) 100%
+                    90deg,
+                    rgba(120, 140, 200, 0.055) 1px,
+                    transparent 1px
                 );
-
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-
-            padding: 50px 20px;
-
-            overflow-x: hidden;
-
-            -webkit-font-smoothing: antialiased;
+        
+            background-size:
+                45px 45px;
+        
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 90%
+                );
+        
+            pointer-events: none;
+        
+            z-index: 0;
+        
+            animation:
+                gridMove 18s linear infinite;
+        
         }
-
-
+        
+        
         /* =========================
-           BACKGROUND ANIMATION
+           MOVING LIGHT
         ========================= */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            width: 450px;
-            height: 450px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(185, 161, 92, 0.10),
-                    transparent 70%
-                );
-
-            top: -180px;
-            left: -180px;
-
-            animation:
-                floatingLight 8s ease-in-out infinite alternate;
-
-            pointer-events: none;
-        }
-
-
+        
         body::after {
-
+        
             content: "";
-
+        
             position: fixed;
-
-            width: 400px;
-            height: 400px;
-
+        
+            width: 550px;
+            height: 550px;
+        
             border-radius: 50%;
-
+        
             background:
                 radial-gradient(
                     circle,
-                    rgba(36, 57, 130, 0.16),
+                    rgba(50, 75, 180, 0.18) 0%,
+                    rgba(185, 161, 92, 0.06) 30%,
                     transparent 70%
                 );
-
-            bottom: -180px;
-            right: -180px;
-
-            animation:
-                floatingLight 10s ease-in-out infinite alternate-reverse;
-
+        
+            top: -180px;
+            left: 50%;
+        
+            transform:
+                translateX(-50%);
+        
+            filter:
+                blur(20px);
+        
             pointer-events: none;
+        
+            z-index: 0;
+        
+            animation:
+                lightMove 8s ease-in-out infinite alternate;
+        
         }
-
-
-        @keyframes floatingLight {
-
-            from {
-                transform: translate(0, 0) scale(1);
+        
+        
+        /* =========================
+           GRID ANIMATION
+        ========================= */
+        
+        @keyframes gridMove {
+        
+            0% {
+                background-position:
+                    0 0,
+                    0 0;
             }
-
-            to {
-                transform: translate(80px, 60px) scale(1.15);
+        
+            100% {
+                background-position:
+                    45px 45px,
+                    45px 45px;
             }
-
+        
         }
-
+        
+        
+        /* =========================
+           LIGHT ANIMATION
+        ========================= */
+        
+        @keyframes lightMove {
+        
+            0% {
+        
+                transform:
+                    translateX(-50%)
+                    translateY(-20px)
+                    scale(1);
+        
+                opacity: 0.7;
+        
+            }
+        
+            50% {
+        
+                transform:
+                    translateX(-50%)
+                    translateY(80px)
+                    scale(1.15);
+        
+                opacity: 1;
+        
+            }
+        
+            100% {
+        
+                transform:
+                    translateX(-50%)
+                    translateY(150px)
+                    scale(1);
+        
+                opacity: 0.7;
+        
+            }
+        
+        }
+    
+    
+            @keyframes floatingLight {
+    
+                from {
+                    transform: translate(0, 0) scale(1);
+                }
+    
+                to {
+                    transform: translate(80px, 60px) scale(1.15);
+                }
+    
+            }
+    
 
         /* =========================
            MAIN PAGE
         ========================= */
 
         .page {
-
+        
             width: 100%;
-
+        
             display: flex;
-
+        
             flex-direction: column;
-
+        
             align-items: center;
-
+        
             position: relative;
-
+        
             z-index: 1;
+        
         }
 
 
